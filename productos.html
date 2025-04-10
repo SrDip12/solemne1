@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafetería Don Gato - Productos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías para el estilo vintage -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: url('https://via.placeholder.com/1600x900?text=Fondo+Vintage') no-repeat center center fixed;
+      background-size: cover;
+      color: #3e3e3e;
+      position: relative;
+      min-height: 100vh;
+    }
+    /* Notificación personalizada en color morado pastel */
+    #notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #D1C4E9; /* color morado pastel */
+      color: #4A148C;
+      padding: 10px 20px;
+      border: 1px solid #B39DDB;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      font-size: 1em;
+      display: none;
+      z-index: 1000;
+    }
+    /* Encabezado y navegación */
+    header {
+      background: rgba(106, 27, 154, 0.85);
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      border-bottom: 3px solid #4A148C;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 5px;
+    }
+    nav {
+      text-align: center;
+      margin: 15px 0;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #D1C4E9;
+    }
+    /* Contenedor principal para productos */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.93);
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 20px;
+    }
+    /* Sección de productos */
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      flex: 1;
+    }
+    .product {
+      background: #EDE7F6;
+      border: 1px solid #d3c0eb;
+      border-radius: 10px;
+      margin: 10px;
+      width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .product:hover {
+      transform: scale(1.02);
+    }
+    .product img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .product h3 {
+      font-family: 'Playfair Display', serif;
+      margin: 10px 0;
+      color: #6A1B9A;
+    }
+    .product p.description {
+      font-size: 0.95em;
+      margin: 10px;
+      font-style: italic;
+    }
+    .product p.price {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #4A148C;
+    }
+    .product button {
+      background: #6A1B9A;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .product button:hover {
+      background: #4A148C;
+    }
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .product {
+        width: 90%;
+        margin: 10px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="notification"></div>
+  <header>
+    <h1>Cafetería Don Gato</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="cart.html">Carrito</a>
+    </nav>
+  </header> 
+  <main class="container">
+    <div class="product-grid">
+      <div class="product">
+        <img src="imagenes/gatonegro.jpg" alt="Café Espresso">
+        <h3>Gato Negro</h3>
+        <p class="description">Expresso intenso, aromático y clásico.</p>
+        <p class="price">$2.50</p>
+        <button onclick="addToCart('Café Espresso', 2.5)">Agregar al Carrito</button>
+      </div>
+      <div class="product">
+        <img src="imagenes\kitty!.jpg" alt="Capuchino">
+        <h3>Catchino</h3>
+        <p class="description">Suave y espumoso con un toque de canela.</p>
+        <p class="price">$3.00</p>
+        <button onclick="addToCart('Capuchino', 3.0)">Agregar al Carrito</button>
+      </div>
+      <div class="product">
+        <img src="imagenes\gatolatte.jpg" alt="Café Latte">
+        <h3>Gato Latte</h3>
+        <p class="description">Suave y cremoso, ideal para la tarde.</p>
+        <p class="price">$3.50</p>
+        <button onclick="addToCart('Café Latte', 3.5)">Agregar al Carrito</button>
+      </div>
+      <div class="product">
+        <img src="imagenes\catchino.jpg" alt="Macchiato">
+        <h3>Michiato</h3>
+        <p class="description">Fuerte, con una suave señal de leche.</p>
+        <p class="price">$3.20</p>
+        <button onclick="addToCart('Macchiato', 3.2)">Agregar al Carrito</button>
+      </div>
+      <div class="product">
+        <img src="imagenes\croissant.jpg" alt="Croissant">
+        <h3>Croissant</h3>
+        <p class="description">Ligero y mantecoso, ideal para acompañar el café.</p>
+        <p class="price">$2.80</p>
+        <button onclick="addToCart('Croissant', 2.8)">Agregar al Carrito</button>
+      </div>
+      <div class="product">
+        <img src="imagenes\brwonie.jpg" alt="Brownie">
+        <h3>Brownie</h3>
+        <p class="description">Decadente, con trozos de nuez.</p>
+        <p class="price">$3.00</p>
+        <button onclick="addToCart('Brownie', 3.0)">Agregar al Carrito</button>
+      </div>
+      </div>
+    </div>
+  </main>
+  
+  <script>
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      notification.innerText = message;
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+    function addToCart(product, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ product, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      showNotification(product + " agregado al carrito.");
+    }
+  </script>
+</body>
+</html>

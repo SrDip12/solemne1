@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafetería Don Gato - Carrito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías para el estilo vintage -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: url('https://via.placeholder.com/1600x900?text=Fondo+Vintage') no-repeat center center fixed;
+      background-size: cover;
+      color: #3e3e3e;
+      min-height: 100vh;
+    }
+    /* Notificación en morado pastel */
+    #notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #D1C4E9;
+      color: #4A148C;
+      padding: 10px 20px;
+      border: 1px solid #B39DDB;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      font-size: 1em;
+      display: none;
+      z-index: 1000;
+    }
+    header {
+      background: rgba(106,27,154,0.85);
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      border-bottom: 3px solid #4A148C;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 5px; }
+    nav {
+      text-align: center;
+      margin: 15px 0;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #D1C4E9; }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.93);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .cart-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      text-align: center;
+      color: #4A148C;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #6A1B9A;
+      padding-bottom: 10px;
+    }
+    .cart-items { margin-top: 20px; }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #EDE7F6;
+      border: 1px solid #d3c0eb;
+      border-radius: 5px;
+    }
+    .cart-item span { font-size: 1em; }
+    .cart-item button {
+      background: #6A1B9A;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    .cart-item button:hover { background: #4A148C; }
+    .total {
+      font-weight: bold;
+      text-align: right;
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #4A148C;
+    }
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .button-group a {
+      background: #6A1B9A;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 0 10px;
+      transition: background 0.3s;
+    }
+    .button-group a:hover { background: #4A148C; }
+    @media (max-width: 768px) {
+      .container { margin: 10px; padding: 15px; }
+    }
+    .payment-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      text-align: center;
+      color: #4A148C;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #6A1B9A;
+      padding-bottom: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    form label {
+      font-weight: bold;
+      font-size: 1em;
+    }
+    form input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    form button {
+      background: #6A1B9A;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+    form button:hover {
+      background: #4A148C;
+    }
+    @media (max-width: 768px) {
+      .container { margin: 10px; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="notification"></div>
+  <header>
+    <h1>Cafetería Don Gato</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="cart.html">Carrito</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="cart-title">Tu Carrito</div>
+    <div id="cart-items" class="cart-items">
+      <!-- Aquí se listan los productos del carrito -->
+    </div>
+    <div id="cart-total" class="total">Total: $0.00</div>
+    <div class="button-group">
+      <a href="productos.html">Seguir Comprando</a>
+    </div>
+  </div>
+  <script>
+    // Renderiza el carrito desde localStorage
+    function renderCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsDiv = document.getElementById('cart-items');
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        let div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `<span>${item.product} - $${item.price.toFixed(2)}</span>
+                         <button onclick="removeItem(${index})">Eliminar</button>`;
+        cartItemsDiv.appendChild(div);
+      });
+      document.getElementById('cart-total').innerText = "Total: $" + total.toFixed(2);
+    }
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+    window.onload = renderCart;
+  </script>
+   <div class="container">
+    <div class="payment-title">Pago Electrónico</div>
+    <form onsubmit="processPayment(event)">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <label for="tarjeta">Número de Tarjeta</label>
+      <input type="text" id="tarjeta" name="tarjeta" required>
+      
+      <label for="vencimiento">Fecha de Vencimiento (MM/AA)</label>
+      <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/AA" required>
+      
+      <label for="cvv">CVV</label>
+      <input type="text" id="cvv" name="cvv" required>
+      
+      <button type="submit">Pagar</button>
+    </form>
+  </div>
+  <script>
+    function processPayment(e) {
+      e.preventDefault();
+      // Simula la acción de pago, muestra la notificación y limpia el carrito
+      showNotification("Pago realizado con éxito.");
+      localStorage.removeItem('cart');
+      e.target.reset();
+      setTimeout(() => {
+        window.location.href = "productos.html";
+      }, 3000);
+    }
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      notification.innerText = message;
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

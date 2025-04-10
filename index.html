@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafetería Don Gato - Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: #3e3e3e;
+      line-height: 1.6;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(106, 27, 154, 0.85);
+      padding: 15px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+    }
+    header .logo {
+      font-size: 1.8em;
+      color: #fff;
+    }
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #D1C4E9;
+    }
+    .hero {
+      height: 100vh;
+      background: url('imagenes/fondo1.png') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      color: #4A148C;
+      margin-bottom: 10px;
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      font-style: italic;
+      color: #6A1B9A;
+      margin-bottom: 30px;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-buttons a {
+      text-decoration: none;
+      background: #6A1B9A;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 5px;
+      font-size: 1.1em;
+      transition: background 0.3s;
+    }
+    .hero-buttons a:hover {
+      background: #4A148C;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #4A148C;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .about p {
+      font-size: 1.1em;
+      text-align: justify;
+      margin-bottom: 15px;
+    }
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact form input, .contact form textarea {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact form button {
+      background: #6A1B9A;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background 0.3s;
+    }
+    .contact form button:hover {
+      background: #4A148C;
+    }
+    .spacer {
+      height: 70px;
+    }
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2.2em;
+      }
+      .hero-content p {
+        font-size: 1em;
+      }
+      header {
+        flex-direction: column;
+      }
+      header nav {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Cafetería Don Gato</div>
+    <nav>
+      <a href="#hero">Inicio</a>
+      <a href="#about">Sobre Nosotros</a>
+      <a href="productos.html">Productos</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+  
+  <div class="spacer"></div>
+  
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Bienvenido a Cafetería Don Gato</h1>
+      <div class="hero-buttons">
+        <a href="productos.html">Explorar Productos</a>
+        <a href="#about">Sobre Nosotros</a>
+        <a href="#contact">Contacto</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="about" class="about">
+    <div class="container">
+      <h2>Sobre Nosotros</h2>
+      <p>En Cafetería Don Gato nos inspiramos en el encanto vintage y el amor por los gatos. Nuestro café combina tradición y modernidad para ofrecerte una experiencia única en cada taza.</p>
+      <p>Contamos con un ambiente acogedor, ideal para compartir buenos momentos y disfrutar de deliciosos productos cuidadosamente preparados. ¡Te esperamos para descubrir la magia de nuestro café!</p>
+    </div>
+  </section>
+  
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contacto</h2>
+      <form action="#" method="post">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="correo" placeholder="Tu correo" required>
+        <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section> 
+</body>
+</html>
